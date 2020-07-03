@@ -1546,7 +1546,15 @@ a {
     color: #E3E6E0 !important;
 }
 
+.alt-btn{
+    background-color: #E3E6E0 !important;
+    color: #2B2630 !important;
+}
 
+.deep-red{
+    background-color: #660000 !important;
+    color: #E3E6E0 !important;
+}
 /*A93D50*/
 /*66554B*/
 /*6F6663*/
