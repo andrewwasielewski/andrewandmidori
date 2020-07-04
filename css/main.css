@@ -1465,6 +1465,22 @@ a {
     margin-right: 16px !important
 }
 
+.w3-padding-top-32 {
+    padding-top: 32px
+}
+
+.w3-party-padding {
+    padding-top: 16px;
+    padding-bottom: 32px;
+}
+.w3-padding-btm {
+    padding-bottom: 32px
+}
+
+.w3-padding-btm-small {
+    padding-bottom: 16px
+}
+
 .w3-padding-small {
     padding: 4px 8px !important
 }
