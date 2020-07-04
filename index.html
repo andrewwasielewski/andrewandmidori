@@ -10,30 +10,27 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+   if (navigator.userAgent.match(/(iPad|iPhone|iPod|Android|Silk)/gi)) {
+      document.write("<link rel=\"stylesheet\" href=\"css/fixparallax.css\"/>");
+   }
+</script>
 <style>
     
 body,h1,h2{font-family: "Raleway", sans-serif}
 body, html {height: 100%}
 p {line-height: 2}
     
-.bgimg, .bgimg2 {
-  min-height: 100%;
-  background-position: center;
-  background-size: cover;
-}
-    
 .mainimg {
     background-image: url("/img/Wallis-engage-021.jpg");
     height:1400px;
-}
-.aboutimg {
-    background-image: url("/img/Wallis-engage-100.jpg");
-    height:1800px;     
+    width:100%;
 }
     
 .stpeteimg {
     background-image: url("/img/stpete.jpg");
-    height:1300px;     
+    height:1300px;  
+    width:100%;
 }
     
 .hiltonimg {
@@ -44,11 +41,10 @@ p {line-height: 2}
     background-image: url("/img/airbnb.jpg");
 }
     
-.bgimg2 {background-image: url("/img/Wallis-engage-100.jpg")}
-    
 .bookstoreimg {
     background-image: url("/img/Wallis-engage-114.jpg");
-    height:1200px
+    height:1200px;
+    width:100%;
 }
     
 .rajdhani-font {
@@ -118,26 +114,21 @@ p {line-height: 2}
     <div class="w3-padding-btm">
       <p>Parking is available at both St. Mary's and the Poynter Institute.  The locations are also within walking distance (just two blocks) of each other</p>
     </div>
-    <div class="w3-row">
-      <div class="w3-half">
-        <div class="w3-padding-btm-small"><h2>When</h2></div>
-        <p>Wedding Mass - 1:00pm</p>
-        <p>&nbsp;</p>
-        <p>Cocktail Hour - 3:30pm</p>
-        <p>Dinner and Dancing - 4:30pm</p>
-        <p>&nbsp;</p>
-        <p>Unofficial Afterparty - 9:00pm</p>
-      </div>
-      <div class="w3-half">
-        <div class="w3-padding-btm-small"><h2>Where</h2></div>
-        <p><a class="hover-link" href="https://goo.gl/maps/6zwKzxH3pARWqr678" target="_blank">St. Mary Our Lady of Grace Church</a></p>
-        <p>&nbsp;</p>
-        <p><a class="hover-link" href="https://goo.gl/maps/cr8np4u2DcoeKB877" target="_blank">Poynter Institute</a></p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p><a class="hover-link" href="https://en.wikipedia.org/wiki/To_be_announced" target="_blank">TBA</a></p>
-        <p></p>
-      </div>
+    <div class="w3-center w3-padding-btm">
+        <div class="w3-padding-btm-tiny"><h2>Ceremony</h2></div>
+        <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://goo.gl/maps/6zwKzxH3pARWqr678" target="_blank">St. Mary Our Lady of Grace Church</a></h5></div>
+        <div class="w3-padding-btm"><p>Wedding Mass - 1:00pm</p></div>
+        <div class="w3-padding-btm-tiny"><h2>Reception</h2></div>
+        <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://goo.gl/maps/cr8np4u2DcoeKB877" target="_blank">Poynter Institute</a></h5></div>
+        <div class="w3-padding-btm">
+            <p>Cocktail Hour - 3:30pm</p>
+            <p>Dinner and Dancing - 4:30pm</p>
+        </div>
+        <div class="w3-padding-btm-tiny"><h2>Afterparty</h2></div>
+        <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://en.wikipedia.org/wiki/To_be_announced" target="_blank">TBA</a></h5></div>
+        <div>
+            <p>Unofficial afterparty - 9:00pm</p>
+        </div>
     </div>
   </div>
 </div>
@@ -254,8 +245,12 @@ p {line-height: 2}
     </div>
     <div class="w3-padding-btm">
     <p class="w3-center">
-        <a href="https://www.amazon.com/wedding/share/andrewandmidori" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Registry on Amazon</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://www.potterybarn.com/registry/ht8zsg68cc/registry-list.html" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Registry on Pottery Barn</a></p>
+        <div class="w3-row w3-padding-sides">
+            <div class="w3-half w3-center w3-padding-btm-tiny">
+                <a href="https://www.amazon.com/wedding/share/andrewandmidori" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Registry on Amazon</a></div>
+            <div class="w3-half w3-center w3-padding-btm-tiny">
+                <a href="https://www.potterybarn.com/registry/ht8zsg68cc/registry-list.html" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Registry on Pottery Barn</a></div>
+        </div>
     </div>
     </div>
 </div>
@@ -300,7 +295,7 @@ p {line-height: 2}
       <h2 class="w3-text-gray">Photos</h2>
       <ul>
           <h4><li>Policy</li></h4>
-          <ul><p>During the marriage ceremony, we ask you to kindly silence and put away your cellphone or personal camera to allow the offical wedding photographer to perform their job</p></ul>
+          <ul><p>Please make sure to turn off all your phones and cameras during the ceremony. A professional photographer will be capturing this special moment and we promise to share all of the pictures with our guests!</p></ul>
           <h4><li>#hastag</li></h4>
           <ul><p>To be determined... </p></ul>
       </ul>

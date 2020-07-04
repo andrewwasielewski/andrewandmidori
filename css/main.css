@@ -1465,6 +1465,11 @@ a {
     margin-right: 16px !important
 }
 
+.w3-padding-sides {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
 .w3-padding-top-32 {
     padding-top: 32px
 }
@@ -1479,6 +1484,10 @@ a {
 
 .w3-padding-btm-small {
     padding-bottom: 16px
+}
+
+.w3-padding-btm-tiny {
+    padding-bottom: 4px
 }
 
 .w3-padding-small {
