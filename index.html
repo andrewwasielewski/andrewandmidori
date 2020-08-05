@@ -383,7 +383,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-			$(wrapper).append('<div class="w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="Guest Name" name="mytext[]"/>&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
+			$(wrapper).append('<div class="w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="Guest Name" name="guest"/>&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
 		}
 	});
 	
@@ -402,22 +402,22 @@ $(document).ready(function() {
         <p>We really hope you can make it.</p>
       </div>
       <form method="POST" action="https://bwq4r6jtg0.execute-api.us-east-2.amazonaws.com/api/rsvp">
-        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="Your Name" name="mytext[]"></div>
+        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="Your Name" name="name"></div>
         <div class="input_fields_wrap"></div>
-        <div class="w3-left-align w3-padding-16"><input class="w3-input-comments w3-border" type="text" placeholder="Comments" name="mytext[]"></div>
+        <div class="w3-left-align w3-padding-16"><input class="w3-input-comments w3-border" type="text" placeholder="Comments" name="comments"></div>
+        <div class="w3-padding-16 w3-center">
+            <button class="add_field_button w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Add Guest</button>
+        </div>
+        <div class="w3-center"><p><i>Sincerely, Andrew & Midori</i></p></div>
+        <div class="w3-row w3-padding-32">
+          <div class="w3-half">
+            <button type="submit" name="yes" onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block light-on-dark-1">Going</button>
+          </div>
+          <div class="w3-half">
+            <button type="submit" name="no" onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block deep-red">Can't come</button>
+          </div>
+      </div>
       </form>
-      <div class="w3-padding-16 w3-center">
-        <button class="add_field_button w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Add Guest</button>
-      </div>
-      <div class="w3-center"><p><i>Sincerely, Andrew & Midori</i></p></div>
-      <div class="w3-row w3-padding-32">
-          <div class="w3-half">
-            <button type="submit" onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block light-on-dark-1">Going</button>
-          </div>
-          <div class="w3-half">
-            <button type="submit" onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block deep-red">Can't come</button>
-          </div>
-      </div>
     </div>
   </div>
 </div>
