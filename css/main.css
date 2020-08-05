@@ -448,10 +448,16 @@ a {
 }
 
 .w3-input {
-    display: block;
+    display: inline;
     padding: 8px;
-    width: 100%;
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid #ccc;}
 
+.w3-input-comments {
+    display: inline;
+    padding: 16px;
+    width: 80%;
     border: none;
     border-bottom: 1px solid #ccc;}
 
