@@ -35,12 +35,15 @@ def lambda_handler(event, context):
     #add individual inputs
     fields = form_data.split('&')
     for i in range(0, len(fields)):
-        print(i)
         if fields[i].startswith('name='):
             sheet.update_acell("A{}".format(new_record_row), fields[i][len('name='):])
         elif fields[i].startswith('guest='):
-            column = chr(ord('A') + i)
-            sheet.update_acell("{}{}".format(column, new_record_row), fields[i][len('guest='):])
+            #limit number of columns written to 
+            if i <= 5:
+                column = chr(ord('A') + i)
+                sheet.update_acell("{}{}".format(column, new_record_row), fields[i][len('guest='):])
+            else:
+                print("form data overflow - field {}".format(i))
         elif fields[i].startswith('comments='):
             sheet.update_acell("G{}".format(new_record_row), fields[i][len('comments='):])
         elif i == len(fields) - 1:
