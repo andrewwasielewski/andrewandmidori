@@ -8,12 +8,60 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani" >
 
+<script type="text/javascript" src="js/lang.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
    if (navigator.userAgent.match(/(iPad|iPhone|iPod|Android|Silk)/gi)) {
       document.write("<link rel=\"stylesheet\" href=\"css/fixparallax.css\"/>");
    }
+</script>
+<script>
+$(document).ready(function() {
+    var english = $(".en_us");
+    var espanol = $(".es_mx");
+
+    //load english by default
+    for(var key in lang.en_us) {
+        fillIn(key, lang.en_us[key])
+    }
+    var englishBtn = document.getElementById('en_us');
+    englishBtn.style.fontWeight = '900';
+    englishBtn.style.textShadow = '0.5px 0 currentColor';
+ 
+    $(english).click(function(e){ //on add input button click
+       console.log('setting language to english');
+       var englishBtn = document.getElementById('en_us');
+       englishBtn.style.fontWeight = '900';
+       englishBtn.style.textShadow = '0.5px 0 currentColor';
+       var spanishBtn = document.getElementById('es_mx');
+       spanishBtn.style.fontWeight = '100';
+       spanishBtn.style.textShadow = '0px 0 currentColor';
+       for(var key in lang.en_us) {
+         fillIn(key, lang.en_us[key])
+       }
+    });
+
+    $(espanol).click(function(e){ //on add input button click
+        console.log('setting language to espanol');
+        var englishBtn = document.getElementById('en_us');
+        englishBtn.style.fontWeight = '100';
+        englishBtn.style.textShadow = '0px 0 currentColor';
+        var spanishBtn = document.getElementById('es_mx');
+        spanishBtn.style.fontWeight = '900';
+        spanishBtn.style.textShadow = '0.5px 0 currentColor';
+        for(var key in lang.es_mx) {
+          fillIn(key, lang.es_mx[key])
+       }
+    });
+    
+	function fillIn(key, value) {
+		var element = document.getElementById(key);
+        if(element){
+            element.innerHTML = value;	
+        }
+	}  
+});
 </script>
 <style>
     
@@ -50,6 +98,11 @@ p {line-height: 2}
 .rajdhani-font {
   font-family: Rajdhani, sans-serif;
 }
+    
+.raleway-font {
+  font-family: Raleway, sans-serif;
+}
+    
 .parallax {
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -62,12 +115,20 @@ p {line-height: 2}
 
 <!-- Navbar (sticky bottom) -->
 <div class="light-on-dark-1 w3-bottom w3-hide-small rajdhani-font">
-  <div class="w3-bar w3-center w3-padding w3-opacity-min w3-hover-opacity-off">
-    <a href="#home" style="width:20%" class="w3-bar-item w3-button">Home</a>
-    <a href="#schedule" style="width:20%" class="w3-bar-item w3-button">Schedule</a>
-    <a href="#lodging" style="width:20%" class="w3-bar-item w3-button">Lodging</a>
-    <a href="#faq" style="width:20%" class="w3-bar-item w3-button">FAQ</a>
-    <a href="#rsvp" style="width:20%" class="w3-bar-item w3-button">RSVP</a>
+  <div class="w3-bar w3-center w3-padding w3-opacity w3-hover-opacity-off">
+    <a href="#home" style="width:20%" class="w3-bar-item w3-button"><div id="Home-Btn"></div></a>
+    <a href="#schedule" style="width:20%" class="w3-bar-item w3-button"><div id="Schedule-Btn"></div></a>
+    <a href="#lodging" style="width:20%" class="w3-bar-item w3-button"><div id="Lodging-Btn"></div></a>
+    <a href="#faq" style="width:20%" class="w3-bar-item w3-button"><div id="FAQ-Btn"></div></a>
+    <a href="#rsvp" style="width:20%" class="w3-bar-item w3-button"><div id="RSVP-Btn"></div></a>
+  </div>
+</div>
+  
+<!-- Language bar (sticky top) -->
+<div class="w3-top w3-hide-small rajdhani-font">
+  <div class="w3-bar w3-left w3-padding w3-opacity w3-hover-opacity-off">
+      <button id="en_us" class="en_us w3-button light-on-dark-1 w3-round w3-large" style="padding:2px 20px">English</button>
+      <button id="es_mx" class="es_mx w3-button light-on-dark-1 w3-round w3-large" style="padding:2px 20px">Español</button>
   </div>
 </div>
     
@@ -75,7 +136,7 @@ p {line-height: 2}
 <header class="w3-display-container w3-wide" id="home">
     <div class="parallax mainimg">
       <div class="w3-text-white w3-center w3-display-topmiddle">
-        <h1 class="w3-jumbo rajdhani-font">Midori and Andrew</h1>
+        <h1 class="w3-jumbo rajdhani-font"><div id="title-text"></div></h1>
         <h2 class="rajdhani-font"><b>1.16.2021</b></h2>
       </div>
     </div>
@@ -84,12 +145,8 @@ p {line-height: 2}
 <!-- About  -->
 <div class="w3-container w3-padding-32" id="about">
   <div class="w3-content">
-    <h1 class="w3-center w3-padding-btm"><b>Us</b></h1>
-    <p><i>
-        Our first date took place on a cold and snowy January night at an outdoor skating rink in Ann Arbor.  Midori quickly grabbed Andrew's hand after stepping onto the ice, and we haven't let go since. <br><br>
-        That first hygge winter of exploring bookstores and cooking together led to springtime runs, summer hikes, and autumn cider mill dates, all interspersed with trips to Tampa and Detroit to visit family.  After working and studying in separate cities (Seattle, Philadelphia, Ann Arbor, and Atlanta) for over a year, we’re especially happy to be in the same city at last.  We’ve enjoyed celebrating many milestones while dating, Andrew’s Master's graduation from Michigan, Midori passing her PhD quals at Georgia Tech, and our Confirmation in the Catholic Church together, but we’re especially happy to be engaged and can’t wait to celebrate our marriage with you soon!
-    </i>
-    </p><br>
+    <h1 class="w3-center w3-padding-btm"><div id="US-Title"></div></h1>
+    <div id="US-Text"></div><br>
   </div>
 </div>
     
@@ -97,11 +154,9 @@ p {line-height: 2}
 <div class="parallax stpeteimg" id="destination">
     <div class="w3-container w3-white" style="position:relative;top:30%;opacity: 0.8;">
         <div class="w3-content">
-            <h1 class="w3-center w3-padding-top-32"><b>Destination</b></h1>
+            <h1 class="w3-center w3-padding-top-32"><div id="Destination-Title"></div></h1>
             <h4 class="w3-center w3-text-grey w3-padding-btm"><b><i>St. Petersburg, Florida</i></b></h4>
-            <div class="w3-padding-btm">
-            <p><i>Known as the "Sunshine City" with 361 days of clear skies per year, St. Petersburg is home to beautiful, award-winning beaches, the world-renowned Salvador Dali Museum, top-rated restaurants and beautiful Fort De Soto Park.  It's where we got engaged and we’re excited to spend a weekend with you in a city that holds a special place in our hearts.</i>
-            </p><br>
+            <div class="w3-padding-btm"><div id="Destination-Text"></div><br>
             </div>
         </div>
     </div>
@@ -110,25 +165,23 @@ p {line-height: 2}
 <!-- Schedule -->
 <div class="w3-container w3-padding-32 w3-center" id="schedule">
   <div class="w3-content">
-    <h1 class="w3-center w3-padding-btm"><b>The Wedding</b></h1>
+    <h1 class="w3-center w3-padding-btm"><div id="Wedding-Title"></div></h1>
     <div class="w3-padding-btm">
-      <p>Parking is available at both St. Mary's and the Poynter Institute.  The locations are also within walking distance (just two blocks) of each other</p>
+      <div id="Wedding-Text"></div>
     </div>
     <div class="w3-center w3-padding-btm">
-        <div class="w3-padding-btm-tiny"><h2>Ceremony</h2></div>
+        <div class="w3-padding-btm-tiny"><h2><div id="Ceremony-Text"></div></h2></div>
         <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://goo.gl/maps/6zwKzxH3pARWqr678" target="_blank">St. Mary Our Lady of Grace Catholic Church</a></h5></div>
-        <div class="w3-padding-btm"><p>Wedding Mass - 12:45pm</p></div>
-        <div class="w3-padding-btm-tiny"><h2>Reception</h2></div>
+        <div class="w3-padding-btm"><div id="Wedding-Mass-Text"></div></div>
+        <div class="w3-padding-btm-tiny"><h2><div id="Reception-Text"></div></h2></div>
         <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://goo.gl/maps/cr8np4u2DcoeKB877" target="_blank">Poynter Institute</a></h5></div>
         <div class="w3-padding-btm">
-            <p>Cocktail Hour - 3:30pm</p>
-            <p>Dinner and Dancing - 4:30pm</p>
+            <div id="Cocktail-Text"></div>
+            <div id="Dinner-Text"></div>
         </div>
-        <div class="w3-padding-btm-tiny"><h2>Afterparty</h2></div>
-        <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://en.wikipedia.org/wiki/To_be_announced" target="_blank">TBA</a></h5></div>
-        <div>
-            <p>Unofficial afterparty - 9:00pm</p>
-        </div>
+        <div class="w3-padding-btm-tiny"><h2><div id="Afterparty-Text"></div></h2></div>
+        <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://en.wikipedia.org/wiki/To_be_announced" target="_blank" id="TBA-Text"></a></h5></div>
+        <div id="Unofficial-Afterparty-Text"></div>
     </div>
   </div>
 </div>
@@ -136,20 +189,20 @@ p {line-height: 2}
 <!-- Local Area Activites -->
 <div class="w3-container w3-padding-32 light-on-dark-1" id="local">
   <div class="w3-content">
-    <h1 class="w3-center w3-padding-btm"><b>Local Area Activities</b></h1>
+    <h1 class="w3-center w3-padding-btm"><div id="Activities-Title"></div></h1>
         <div class="w3-padding-btm">
-        <p>Below are links to a few of our favorite spots and other local suggestions that we’d be excited for you to check out. You can also follow our <a href="https://goo.gl/maps/3hDYTYFquWyzdSjg7" target="_blank">google list</a> for a more complete list of our recommendations.</p>
+            <div id="Activities-Text"></div>
         </div>
         <div class="w3-row w3-padding-btm">
           <div class="w3-fifth w3-center">
-            <div class="w3-padding-btm-small"><h3>Coffee</h3></div>
+            <div class="w3-padding-btm-small"><h3><div id="Activities-Coffee"></div></h3></div>
               <p><a class="hover-link" href="https://www.blackcrowcoffeeco.com/" target="_blank">Black Crow Coffee Shop</a></p>
               <p><a class="hover-link" href="https://www.thebikery.bike/articles/coffee-shop-pg185.htm" target="_blank">The Bikery Coffee & Bicycle Shop</a></p>
               <p><a class="hover-link" href="https://paciugostpete.com/" target="_blank">Paciugo Gelato & Caffè</a></p>
               <p><a class="hover-link" href="https://oxfordexchange.com/" target="_blank">The Oxford Exchange</a></p>
           </div>
           <div class="w3-fifth w3-center">
-              <div class="w3-padding-btm-small"><h3>Lunch/Dinner</h3></div>
+              <div class="w3-padding-btm-small"><h3><div id="Activities-Lunch"></div></h3></div>
               <p><a class="hover-link" href="https://armatureworks.com/" target="_blank">Armature Works</a></p>
               <p><a class="hover-link" href="http://eatatbodega.com/" target="_blank">Bodega on Central</a></p>
               <p><a class="hover-link" href="https://cassisstpete.com/" target="_blank">Cassis St. Pete</a></p>
@@ -157,14 +210,14 @@ p {line-height: 2}
               <p><a class="hover-link" href="https://www.parkshoregrill.com/" target="_blank">Parkshore Grill</a></p>
           </div>
           <div class="w3-fifth w3-center">
-              <div class="w3-padding-btm-small"><h3>Drinks</h3></div>
+              <div class="w3-padding-btm-small"><h3><div id="Activities-Drinks"></div></h3></div>
               <p><a class="hover-link" href="https://www.annatawine.com/" target="_blank">Annata Wine Bar</a></p>
               <p><a class="hover-link" href="https://3dbrewing.com/" target="_blank">3 Daughters Brewing</a></p>
               <p><a class="hover-link" href="https://www.kozubadistillery.com/" target="_blank">Kozuba and Sons</a></p>
               <p><a class="hover-link" href="https://www.thebirchwood.com/thecanopy/" target="_blank">The Canopy</a></p>
           </div>
           <div class="w3-fifth w3-center">
-              <div class="w3-padding-btm-small"><h3>Parks/Museums</h3></div>
+              <div class="w3-padding-btm-small"><h3><div id="Activities-Parks"></div></h3></div>
               <p><a class="hover-link" href="https://thedali.org/" target="_blank">The Dalí (Salvador Dalí Museum)</a></p>
               <p><a class="hover-link" href="https://www.moreanartscenter.org/chihuly/" target="_blank">Chihuly Collection</a></p>
               <p><a class="hover-link" href="https://mfastpete.org/" target="_blank">Museum of Fine Arts</a></p>
@@ -174,7 +227,7 @@ p {line-height: 2}
               <p><a class="hover-link" href="https://goo.gl/maps/A6kVpzfYGdK8YNz29" target="_blank">Vinoy Park</a></p>
           </div>
           <div class="w3-fifth w3-center">
-              <div class="w3-padding-btm-small"><h3>Beaches</h3></div>
+              <div class="w3-padding-btm-small"><h3><div id="Activities-Beaches"></div></h3></div>
               <p><a class="hover-link" href="https://goo.gl/maps/SRoeVT8ArASEuNLR6" target="_blank">Sunset Beach</a></p>
               <p><a class="hover-link" href="https://goo.gl/maps/1vMGEnMh4Y1tfDhP9" target="_blank">St. Pete Beach</a></p>
               <p><a class="hover-link" href="https://goo.gl/maps/zDSSjWoWgrJvQiAj8" target="_blank">Fort De Soto Park</a></p>
@@ -188,27 +241,27 @@ p {line-height: 2}
 <!-- Lodging -->
 <div class="w3-container w3-padding-32 light-background" id="lodging">
   <div class="w3-content">
-    <h1 class="w3-center w3-padding-btm"><b>Lodging</b></h1>
+    <h1 class="w3-center w3-padding-btm"><div id="Lodging-Title"></div></h1>
         <div class="w3-row w3-padding-btm">
           <div class="w3-half">
             <h2 class="w3-center text-dark-gray">Hyatt Place St. Petersburg</h2>
               <div class="w3-center"><img src="img/hyatt.jpg" class="lodgingimg"></div>
-            <p style="margin-left:10px;margin-right:10px">We’ve reserved rooms at the Hyatt in downtown St. Pete.  It's walking distance to the restaurants and shops along Beach Dr. and only a half mile north of St. Mary's</p>
+              <div id="Lodging-Hyatt"></div>
           </div>
           <div class="w3-half">
             <h2 class="w3-center text-dark-gray">Airbnb</h2>
             <div class="w3-center"><img src="img/airbnb.png" class="lodgingimg"></div>
-            <p style="margin-left:10px;margin-right:10px">There are plenty of options available if you'd like to explore the St. Pete area from a local's perspective by renting a cozy beach bungalow, house, or apartment downtown. This is a great option for large groups traveling together.</p>
+            <div id="Lodging-Airbnb"></div>
           </div>
         </div>
-    <p class="w3-center w3-padding-btm"><a href="https://www.hyatt.com/en-US/hotel/florida/hyatt-place-st-petersburg-downtown/piezd" class=" w3-button light-on-dark-1 w3-round w3-margin-top w3-padding-large w3-large">Reserve a Room</a></p>
+    <p class="w3-center w3-padding-btm"><a href="https://www.hyatt.com/en-US/hotel/florida/hyatt-place-st-petersburg-downtown/piezd" class=" w3-button light-on-dark-1 w3-round w3-margin-top w3-padding-large w3-large" id="Lodging-Reserve"></a></p>
   </div>
 </div>    
 
 <!-- Bridal Party -->
 <div class="w3-container w3-padding-32" id="party">
   <div class="w3-content">
-    <h1 class="w3-center" style="margin-bottom:48px"><b>Bridal Party</b></h1>
+    <h1 class="w3-center" style="margin-bottom:48px"><div id="Bridal-Party"></div></h1>
       <div class="w3-row">
       <div class="w3-quarter">
         <img class="w3-auto partyimg" src="/img/emily.jpeg"><p class="w3-center w3-party-padding">Emily Vargas<br>Maid of Honor</p>
@@ -238,18 +291,17 @@ p {line-height: 2}
 <!-- Registry -->
 <div class="w3-container w3-padding-32 light-background" id="registry">
   <div class="w3-content">
-    <h1 class="w3-center w3-padding-btm"><b>Registry</b></h1>
+    <h1 class="w3-center w3-padding-btm"><div id="Registry-Title"></div></h1>
     <div class="w3-padding-btm">
-    <p><i>What we want most of all for our wedding is to have all of our family and friends there to celebrate with us, and so, more than anything, we would simply enjoy your presence. (We mean it!) But, if you really feel compelled to get us something, a few items we could use in making our home together can be found here</i>
-    </p>
+        <div id="Registry-Text"></div>
     </div>
     <div class="w3-padding-btm">
     <p class="w3-center">
         <div class="w3-row w3-padding-sides">
             <div class="w3-half w3-center w3-padding-btm-tiny">
-                <a href="https://www.amazon.com/wedding/share/andrewandmidori" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Registry on Amazon</a></div>
+                <a href="https://www.amazon.com/wedding/share/andrewandmidori" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large" id="Registry-Amazon"></a></div>
             <div class="w3-half w3-center w3-padding-btm-tiny">
-                <a href="https://www.potterybarn.com/registry/ht8zsg68cc/registry-list.html" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Registry on Pottery Barn</a></div>
+                <a href="https://www.potterybarn.com/registry/ht8zsg68cc/registry-list.html" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large" id="Registry-Pottery-Barn"></a></div>
         </div>
     </div>
     </div>
@@ -259,7 +311,7 @@ p {line-height: 2}
 <div class="parallax bookstoreimg">
     <div class="w3-container" style="position:relative;top:40%;">
         <div class="w3-content">
-            <h1 class="w3-center w3-text-white"><b>We hope to see you there!</b></h1>
+            <h1 class="w3-center w3-text-white"><div id="See-You"></div></h1>
         </div>
     </div>
 </div>
@@ -267,39 +319,39 @@ p {line-height: 2}
 <!-- FAQ -->
 <div class="w3-container w3-padding-32 w3-grayscale-min" id="faq">
   <div class="w3-content">
-    <h1 class="w3-center w3-padding-btm"><b>FAQ</b></h1>
+    <h1 class="w3-center w3-padding-btm"><div id="FAQ-Title"></div></h1>
       <div class="w3-center w3-padding-btm">
-        <p><i>If you have any other questions not answered here, please email us at <a href = "mailto: andrewandmidori28@gmail.com">andrewandmidori28@gmail.com</a></i></p>
+        <div id="FAQ-Text"></div>
       </div>
       <div class="w3-padding-btm">
-      <h2 class="w3-text-gray">Travel</h2>
+      <h2 class="w3-text-gray" id="FAQ-Travel"></h2>
       <ul>
-          <h4><li>What to wear</li></h4>
-          <ul><p>Formal attire, black tie optional</p></ul>
-          <h4><li>Weather</li></h4>
-          <ul><p>Typical temperatures in Janurary for St. Pete  range from the upper 60s to low 70s</p></ul>
-          <h4><li>Transportation</li></h4>
-          <ul><p>Uber/Lyft from Tampa International Airport to downtown St. Pete typically runs around $40.  Most local attractions are centrally located and we recommend using a ridesharing service or walking to save the hassle of parking downtown.</p></ul>
+          <h4><li id="FAQ-Attire-Title"></li></h4>
+          <ul><p id="FAQ-Attire-Text"></p></ul>
+          <h4><li id="FAQ-Weather-Title"></li></h4>
+          <ul><p id="FAQ-Weather-Text"></p></ul>
+          <h4><li id="FAQ-Transportation-Title"></li></h4>
+          <ul><p id="FAQ-Transportation-Text"></p></ul>
           <h4><li>COVID-19</li></h4>
-          <ul><p>During this uncertain time with COVID-19, we are monitoring the situation closely and will communicate any changes due to local regulations or public health guidance. We are prepared to take every precaution necessary to make our wedding safe for our guests. Our wedding is currently happening as planned, and we look forward to celebrating with you all on Janurary 16, 2021!</p></ul>
+          <ul><div id="covid"></div></ul>
       </ul>
       </div>
       <div class="w3-padding-btm">
-      <h2 class="w3-text-gray">Ceremony/Reception</h2>
+      <h2 class="w3-text-gray" id="FAQ-Ceremony"></h2>
       <ul>
-          <h4><li>Parking</li></h4>
-          <ul><p>St Mary's has a small parking lot with spaces available on a first come first serve basis.  Vehicles must be moved after ther ceremony to accomodate parishoners attending the afternoon and evening masses.  Gated parking is available at the Poynter Institute</p></ul>
-          <h4><li>Food</li></h4>
-          <ul><p>Entrees will be guest choice tableside.  Please communicate any dietary restrictions to the wait staff when they take your selection</p></ul>
-          <h4><li>Alcohol</li></h4>
-          <ul><p>Open bar to all guests of legal drinking age</p></ul>
+          <h4><li id="FAQ-Parking-Title"></li></h4>
+          <ul><p id="FAQ-Parking-Text"></p></ul>
+          <h4><li id="FAQ-Food-Title"></li></h4>
+          <ul><p id="FAQ-Food-Text"></p></ul>
+          <h4><li id="FAQ-Alcohol-Title"></li></h4>
+          <ul><p id="FAQ-Alcohol-Text"></p></ul>
       </ul>
       </div>
       <div class="w3-padding-btm">
-      <h2 class="w3-text-gray">Photos</h2>
+      <h2 class="w3-text-gray" id="FAQ-Photos-Title"></h2>
       <ul>
-          <h4><li>Policy</li></h4>
-          <ul><p>Please make sure to turn off all your phones and cameras during the ceremony. A professional photographer will be capturing this special moment and we promise to share all of the pictures with our guests!</p></ul>
+          <h4><li id="FAQ-Photo-Policy"></li></h4>
+          <ul><div id="FAQ-Photos-Text"></div></ul>
           <h4><li>#hashtag</li></h4>
           <ul><p>#AndrewAndMidoriSayIDo</p></ul>
       </ul>
@@ -365,7 +417,7 @@ p {line-height: 2}
 <!-- RSVP section -->
 <div class="w3-container w3-padding-32 light-background" id="rsvp">
   <div class="w3-content">
-      <h3 class="w3-center"><b>Kindly Respond By November, 2020</b><br><br></h3>
+      <h3 class="w3-center"><div id="Respond"></div><br><br></h3>
       <p class="w3-center w3-xlarge">
           <button onclick="document.getElementById('id01').style.display='block'" class="w3-button light-on-dark-1 w3-round w3-padding-large w3-large" style="padding:8px 60px">RSVP</button>
       </p>
