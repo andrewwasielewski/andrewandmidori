@@ -213,7 +213,7 @@ p {line-height: 2}
             <div id="Dinner-Text"></div>
         </div>
         <div class="w3-padding-btm-tiny"><h2><div id="Afterparty-Text"></div></h2></div>
-        <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://en.wikipedia.org/wiki/To_be_announced" target="_blank" id="TBA-Text"></a></h5></div>
+        <div class="w3-padding-btm-small"><h5><a class="hover-link" href="https://www.thebirchwood.com/thecanopy/" target="_blank" id="TBA-Text"></a></h5></div>
         <div id="Unofficial-Afterparty-Text"></div>
     </div>
   </div>
@@ -463,8 +463,8 @@ p {line-height: 2}
     <div class="w3-container w3-white">
       <button type="x" name="x" onclick="closeRSVP()" type="button" class="close-button light-on-dark-1 w3-round w3-small" style="position:absolute; top:15px; right:15px">x</button>
       <div class="w3-center">
-        <h1 class="w3-wide">CAN YOU COME?</h1>
-        <p>Whether virtually, or in person, we're excited to share this special time with you.</p>
+        <h1 id="rsvp-title" class="w3-wide"></h1>
+        <div id="rsvp-subtitle"></div>
       </div>
       <form name="rsvpForm" method="POST" action="https://bwq4r6jtg0.execute-api.us-east-2.amazonaws.com/api/rsvp">
         <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Your Name" name="name" required type="text"></div>
@@ -473,13 +473,12 @@ p {line-height: 2}
         <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Passcode" name="passcode" required></div> 
         <div class="w3-left-align w3-padding-16"><input class="w3-input-comments w3-border" type="text" placeholder="Comments" name="comments"></div>
         <div class="w3-padding-16 w3-center">
-            <button class="add_field_button w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Add Guest</button>
+            <button id="rsvp-add-guest" class="add_field_button w3-button light-on-dark-1 w3-round w3-padding-large w3-large"></button>
         </div>
-        <div class="w3-center"><p><i>Sincerely, Andrew & Midori</i></p></div>
-        <div class="w3-row w3-padding-32">
-            <button type="submit" name="yes" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button light-on-dark-1">Going</button>
-            <button type="submit" name="virtual" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button dark-gray">Attending virtually</button>
-            <button type="submit" name="no" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button deep-red">Can't come</button>
+        <div class="w3-row w3-padding-24">
+            <button id="rsvp-yes" type="submit" name="yes" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button light-on-dark-1"></button>
+            <button id="rsvp-virtual" type="submit" name="virtual" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button dark-gray"></button>
+            <button id="rsvp-no" type="submit" name="no" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button deep-red"></button>
         </div>
       </form>
     </div>

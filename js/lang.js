@@ -18,7 +18,7 @@ var lang = {
     'Cocktail-Text': "<p>Cocktail Hour - 3:30pm</p>",
     'Dinner-Text': "<p>Dinner and Dancing - 4:30pm</p>",
     'Afterparty-Text': "Afterparty",
-    'TBA-Text': "TBA",
+    'TBA-Text': "The Canopy",
     'Unofficial-Afterparty-Text': "<p>Unofficial afterparty - 9:00pm</p>",
     'Activities-Title': "<b>Local Area Activities</b>",
     'Activities-Text': "<p>Below are links to a few of our favorite spots and other local suggestions that we’d be excited for you to check out. You can also follow our <a href='https://goo.gl/maps/3hDYTYFquWyzdSjg7' target='_blank'><u>google list</u></a> for a more complete list of our recommendations.</p>",
@@ -28,7 +28,7 @@ var lang = {
     'Activities-Parks': "Parks/Museums",
     'Activities-Beaches': "Beaches",
     'Lodging-Title': "<b>Lodging</b>",
-    'Lodging-Hyatt': "<p style='margin-left:10px;margin-right:10px'>We’ve reserved rooms at the Hyatt in downtown St. Pete.  It's walking distance to the restaurants and shops along Beach Dr. and only a half mile north of St. Mary's</p>",
+    'Lodging-Hyatt': "<p style='margin-left:10px;margin-right:10px'>We’ve reserved rooms at the Hyatt in downtown St. Pete.  It's walking distance to the restaurants and shops along Beach Dr. and only a half mile north of St. Mary's.  To book, call 1-888-492-8847 and use group code <b>G-MWWD</b> or ask for the Maeda-Wallis wedding rate by December 15.</p>",
     'Lodging-Airbnb': "<p style='margin-left:10px;margin-right:10px'>There are plenty of options available if you'd like to explore the St. Pete area from a local's perspective by renting a cozy beach bungalow, house, or apartment downtown. This is a great option for large groups traveling together.</p>",
     'Lodging-Reserve': "Reserve a Room",
     'Bridal-Party': "<b>Bridal Party</b>",
@@ -57,7 +57,14 @@ var lang = {
     'FAQ-Photo-Policy': "Policy",
     'FAQ-Photos-Text': "<p>Please make sure to turn off all your phones and cameras during the ceremony. A professional photographer will be capturing this special moment and we promise to share all of the pictures with our guests!</p>",
     'Respond': "<b>Kindly Respond By December, 2020</b>",
-    'covid': "During this uncertain time with COVID-19, we are monitoring the situation closely and will communicate any changes due to local regulations or public health guidance. We are prepared to take every precaution necessary to make our wedding safe for our guests. Our wedding is currently happening as planned, and we look forward to celebrating with you all on Janurary 16, 2021"
+    'covid': "During this uncertain time with COVID-19, we are monitoring the situation closely and will communicate any changes due to local regulations or public health guidance. We are prepared to take every precaution necessary to make our wedding safe for our guests. Our wedding is currently happening as planned, and we look forward to celebrating with you all on Janurary 16, 2021",
+    'rsvp-title':"CAN YOU COME?",
+    'rsvp-subtitle': "<p>Whether virtually, or in person, we're excited to share this special time with you.</p>",
+    'rsvp-add-guest': "Add Guest",
+    'rsvp-closing': "<p><i>Sincerely, Andrew & Midori</i></p>",
+    'rsvp-yes': "Going",
+    'rsvp-virtual': "Attending virtually",
+    'rsvp-no': "Can't come"
   },
   'es_mx': {
     'title-text': 'Midori y Andrew',
@@ -78,7 +85,7 @@ var lang = {
     'Cocktail-Text': "<p>Hora de cóctel - 3:30pm</p>",
     'Dinner-Text': "<p>Cena y Baile - 4:30pm</p>",
     'Afterparty-Text': "Afterparty",
-    'TBA-Text': "Será anunciado más tarde",
+    'TBA-Text': "The Canopy",
     'Unofficial-Afterparty-Text': "<p>Tornaboda (No oficial) - 9:00pm</p>",
     'Activities-Title': "<b>Actividades Locales</b>",
     'Activities-Text': "A continuación hay enlaces a algunos de nuestros <a href='https://goo.gl/maps/3hDYTYFquWyzdSjg7' target='_blank'><u>lugares favoritos</u></a> y otras sugerencias locales que recomendamos a nuestros invitados.",
@@ -88,7 +95,7 @@ var lang = {
     'Activities-Parks': "Sitios",
     'Activities-Beaches': "Playas",
     'Lodging-Title': "<b>Hospedaje</b>",
-    'Lodging-Hyatt': "<p style='margin-left:10px;margin-right:10px'>Hemos reservado un bloque de habitaciones en el hotel Hyatt Place St. Petersburg/Downtown. El hotel está a media milla de la ceremonia y a sólo dos cuadras de los restaurantes y las atracciones a lo largo de Beach Drive en Downtown.</p>",
+    'Lodging-Hyatt': "<p style='margin-left:10px;margin-right:10px'>Hemos reservado un bloque de habitaciones en el hotel Hyatt Place St. Petersburg/Downtown. El hotel está a media milla de la ceremonia y a sólo dos cuadras de los restaurantes y las atracciones a lo largo de Beach Drive en Downtown.  Para reservar, por favor llame al 1-888-492-8847 y use el código de grupo <b>G-MWWD</b> o pregunte por la tarifa de bodas Maeda-Wallis antes del 15 de diciembre.</p>",
     'Lodging-Airbnb': "<p style='margin-left:10px;margin-right:10px'>Hay muchas opciones disponibles si desea explorar el área de St. Pete desde la perspectiva de una persona local. A través de Airbnb, puede alquilar un acogedor “bungalow” en la playa, una casa, o un apartamento en el centro de St. Pete. Esta es una buena opción para grupos grandes que están viajando juntos.</p>",
     'Lodging-Reserve': "Reservar una habitación",
     'Bridal-Party': "<b>Corte de Bodas</b>",
@@ -117,6 +124,13 @@ var lang = {
     'FAQ-Photo-Policy': "Póliza",
     'FAQ-Photos-Text': "<p>Por favor asegúrese de apagar su teléfono y cámara durante la misa. ¡Un fotógrafo professional capturará este momento especial y prometemos compartir todas la fotos con nuestros invitados!</p>",
     'Respond': "<b>Por favor, les agradecemos responder antes de diciembre de 2020</b>",
-    'covid': "Durante este tiempo de incertidumbre debido a COVID-19, estamos monitoreando atentamente la situación y comunicaremos cualquier cambio según las regulaciones locales y las guías de salud pública. Estamos preparados para tomar todas las precauciones necesarias para que nuestra boda sea segura para nuestros invitados. ¡Actualmente, nuestra boda se llevará a cabo según lo planeado, y esperamos celebrar con ustedes el 16 de enero de 2021!"
+    'covid': "Durante este tiempo de incertidumbre debido a COVID-19, estamos monitoreando atentamente la situación y comunicaremos cualquier cambio según las regulaciones locales y las guías de salud pública. Estamos preparados para tomar todas las precauciones necesarias para que nuestra boda sea segura para nuestros invitados. ¡Actualmente, nuestra boda se llevará a cabo según lo planeado, y esperamos celebrar con ustedes el 16 de enero de 2021!",
+    'rsvp-title':"¿PUEDES VENIR?",
+    'rsvp-subtitle':"Ya sea de forma virtual o en persona, estamos emocionados de compartir este momento especial contigo.",
+    'rsvp-add-guest': "Agregar invitado/a",
+    'rsvp-closing': "<p><i>Atentamente, Andrew y Midori </i></p>",
+    'rsvp-yes': "Asistiendo",
+    'rsvp-virtual': "Virtualmente",
+    'rsvp-no': "No puedo asistir"
   }
 };
