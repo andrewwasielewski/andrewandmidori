@@ -20,7 +20,12 @@
 $(document).ready(function() {
     var english = $(".en_us");
     var espanol = $(".es_mx");
-
+    
+    var max_fields = 5; //maximum input boxes allowed
+	var wrapper = $(".input_fields_wrap"); //Fields wrapper
+	var add_button = $(".add_field_button"); //Add button ID
+	var x = 1; //initial input count
+    
     //load english by default
     for(var key in lang.en_us) {
         fillIn(key, lang.en_us[key])
@@ -55,14 +60,42 @@ $(document).ready(function() {
        }
     });
     
-	function fillIn(key, value) {
+    function fillIn(key, value) {
 		var element = document.getElementById(key);
         if(element){
             element.innerHTML = value;	
         }
 	}  
+    
+	$(add_button).click(function(e){ //on add input button click
+		e.preventDefault();
+		if(x < max_fields){ //max input box allowed
+			x++; //text box increment
+			$(wrapper).append('<div class="w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="Guest Name" name="guest"/>&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
+		}
+	});
+	
+	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+		e.preventDefault(); $(this).parent('div').remove(); x--;
+	})
 });
 </script>
+<script>
+closeRSVP = function() {
+    document.getElementById('id01').style.display='none';
+    document.getElementById('indicators').style.display='block';
+}
+
+validateCloseRSVP = function() {
+  var form_name = document.forms["rsvpForm"]["name"].value;
+  var form_email = document.forms["rsvpForm"]["email"].value;
+  var form_passcode = document.forms["rsvpForm"]["passcode"].value;
+  if (form_name != "" && form_email !="" && form_passcode != "") {
+      closeRSVP()
+  }
+}
+</script>
+    
 <style>
     
 body,h1,h2{font-family: "Raleway", sans-serif}
@@ -362,7 +395,7 @@ p {line-height: 2}
 <div class="parallax">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
-    <ol class="carousel-indicators">
+    <ol id="indicators" class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -419,56 +452,35 @@ p {line-height: 2}
   <div class="w3-content">
       <h3 class="w3-center"><div id="Respond"></div></h3>
       <p class="w3-center w3-padding-top-24">
-          <button onclick="document.getElementById('id01').style.display='block'" class="w3-button light-on-dark-1 w3-round w3-large" style="padding:8px 48px">RSVP</button>
+          <button onclick="document.getElementById('id01').style.display='block'; document.getElementById('indicators').style.display='none'" class="w3-button light-on-dark-1 w3-round w3-large" style="padding:8px 48px">RSVP</button>
       </p>
   </div>
 </div>
-
-<script>
-$(document).ready(function() {
-	var max_fields = 5; //maximum input boxes allowed
-	var wrapper = $(".input_fields_wrap"); //Fields wrapper
-	var add_button = $(".add_field_button"); //Add button ID
-	
-	var x = 1; //initial input count
-	$(add_button).click(function(e){ //on add input button click
-		e.preventDefault();
-		if(x < max_fields){ //max input box allowed
-			x++; //text box increment
-			$(wrapper).append('<div class="w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="Guest Name" name="guest"/>&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
-		}
-	});
-	
-	$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-		e.preventDefault(); $(this).parent('div').remove(); x--;
-	})
-});
-</script>
     
 <!-- RSVP popup -->
 <div id="id01" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:32px;max-width:600px">
     <div class="w3-container w3-white">
+      <button type="x" name="x" onclick="closeRSVP()" type="button" class="close-button light-on-dark-1 w3-round w3-small" style="position:absolute; top:15px; right:15px">x</button>
       <div class="w3-center">
         <h1 class="w3-wide">CAN YOU COME?</h1>
         <p>We really hope you can make it.</p>
       </div>
-      <form method="POST" action="https://bwq4r6jtg0.execute-api.us-east-2.amazonaws.com/api/rsvp">
-        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="Your Name" name="name"></div>
+      <form name="rsvpForm" method="POST" action="https://bwq4r6jtg0.execute-api.us-east-2.amazonaws.com/api/rsvp">
+        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Your Name" name="name" required type="text"></div>
         <div class="input_fields_wrap"></div>
+        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Your Email" name="email" required></div>
+        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Passcode" name="passcode" required></div> 
         <div class="w3-left-align w3-padding-16"><input class="w3-input-comments w3-border" type="text" placeholder="Comments" name="comments"></div>
         <div class="w3-padding-16 w3-center">
             <button class="add_field_button w3-button light-on-dark-1 w3-round w3-padding-large w3-large">Add Guest</button>
         </div>
         <div class="w3-center"><p><i>Sincerely, Andrew & Midori</i></p></div>
         <div class="w3-row w3-padding-32">
-          <div class="w3-half">
-            <button type="submit" name="yes" onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block light-on-dark-1">Going</button>
-          </div>
-          <div class="w3-half">
-            <button type="submit" name="no" onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-block deep-red">Can't come</button>
-          </div>
-      </div>
+            <button type="submit" name="yes" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button light-on-dark-1">Going</button>
+            <button type="submit" name="virtual" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button dark-gray">Attending virtually</button>
+            <button type="submit" name="no" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button deep-red">Can't come</button>
+        </div>
       </form>
     </div>
   </div>

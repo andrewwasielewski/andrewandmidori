@@ -366,11 +366,26 @@ a {
 
     cursor: pointer;}
 
+.close-button {
+    display: inline-block;
+    overflow: hidden;
+    padding: 8px 12px;
+    border: none;
+    background-color: inherit;
+    color: inherit;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;}
+
 .w3-btn:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
 .w3-btn,
+.close-button,
 .w3-button {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -382,6 +397,7 @@ a {
 
 .w3-disabled,
 .w3-btn:disabled,
+.close_button:disabled,
 .w3-button:disabled {
     opacity: 0.3
 
@@ -594,6 +610,10 @@ a {
     white-space: normal
 }
 
+.w3-bar .close-button {
+    white-space: normal
+}
+
 .w3-bar-block .w3-bar-item {
     display: block;
     float: none;
@@ -647,6 +667,11 @@ a {
 .w3-tiny-col,
 .w3-fifth {
     float: left;
+    width: 100%
+}
+
+.w3-ninety {
+    float: center;
     width: 100%
 }
 
@@ -752,6 +777,10 @@ a {
         width: 83.33333%
     }
 
+    .w3-ninety {
+        width: 90.00%
+    }
+    
     .w3-col.m11 {
         width: 91.66666%
     }
@@ -1550,6 +1579,11 @@ a {
     color: #000 !important;
 }
 
+.close-button:hover {
+    background-color: #ccc !important;
+    color: #000 !important;
+}
+
 .w3-transparent,
 .w3-hover-none:hover {
     background-color: transparent !important
@@ -1584,6 +1618,11 @@ a {
 .alt-btn{
     background-color: #E3E6E0 !important;
     color: #2B2630 !important;
+}
+
+.dark-gray{
+    background-color: #404040 !important;
+    color: #E3E6E0 !important;
 }
 
 .deep-red{

@@ -13,6 +13,9 @@ client = gspread.authorize(creds)
 
 def lambda_handler(event, context):
 
+    #log event
+    print(event)
+
     # Find workbook by name and open the sheet
     spr = client.open("andrewandmidori_rsvp")
     sheet = spr.worksheet('RSVP')
@@ -20,7 +23,7 @@ def lambda_handler(event, context):
     print(form_data)
     
     #Verify integrity of sheet with safety cell
-    if sheet.acell('J2').value != 'SAFETY':
+    if sheet.acell('L2').value != 'SAFETY':
         print('safety check failed - cell is: ' +str(sheet.acell('J2')))
         return {
             'statusCode': 500,
@@ -30,7 +33,7 @@ def lambda_handler(event, context):
     #add the new guest form information
     new_record_row = next_available_row(sheet)
     print('inserting new record into row ' + str(new_record_row))
-    sheet.update_acell("I{}".format(new_record_row), form_data)
+    sheet.update_acell("K{}".format(new_record_row), form_data)
     
     #add individual inputs
     fields = form_data.split('&')
@@ -46,8 +49,13 @@ def lambda_handler(event, context):
                 print("form data overflow - field {}".format(i))
         elif fields[i].startswith('comments='):
             sheet.update_acell("G{}".format(new_record_row), fields[i][len('comments='):])
+        elif fields[i].startswith('email='):
+            email = fields[i][len('email='):].replace('%40', '@')
+            sheet.update_acell("H{}".format(new_record_row), email)
+        elif fields[i].startswith('passcode='):
+            sheet.update_acell("I{}".format(new_record_row), fields[i][len('passcode='):])
         elif i == len(fields) - 1:
-            sheet.update_acell("H{}".format(new_record_row), fields[i][:-1])
+            sheet.update_acell("J{}".format(new_record_row), fields[i][:-1])
     
     return {
         'statusCode': 302,
