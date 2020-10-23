@@ -21,10 +21,11 @@ $(document).ready(function() {
     var english = $(".en_us");
     var espanol = $(".es_mx");
     
-    var max_fields = 5; //maximum input boxes allowed
 	var wrapper = $(".input_fields_wrap"); //Fields wrapper
 	var add_button = $(".add_field_button"); //Add button ID
-	var x = 1; //initial input count
+	var x = 0; //initial input count
+    var max_fields = 4; //maximum input boxes allowed
+    var selected_language = 'en';
     
     //load english by default
     for(var key in lang.en_us) {
@@ -36,6 +37,8 @@ $(document).ready(function() {
  
     $(english).click(function(e){ //on add input button click
        console.log('setting language to english');
+       selected_language = 'en';
+        
        var englishBtn = document.getElementById('en_us');
        englishBtn.style.fontWeight = '900';
        englishBtn.style.textShadow = '0.5px 0 currentColor';
@@ -45,11 +48,14 @@ $(document).ready(function() {
        for(var key in lang.en_us) {
          fillIn(key, lang.en_us[key])
        }
+       updateDynamicInput();
     });
 
     $(espanol).click(function(e){ //on add input button click
         console.log('setting language to espanol');
         var englishBtn = document.getElementById('en_us');
+        selected_language = 'es';
+        
         englishBtn.style.fontWeight = '100';
         englishBtn.style.textShadow = '0px 0 currentColor';
         var spanishBtn = document.getElementById('es_mx');
@@ -58,6 +64,7 @@ $(document).ready(function() {
         for(var key in lang.es_mx) {
           fillIn(key, lang.es_mx[key])
        }
+       updateDynamicInput();
     });
     
     function fillIn(key, value) {
@@ -65,13 +72,23 @@ $(document).ready(function() {
         if(element){
             element.innerHTML = value;	
         }
-	}  
+	} 
+    
+    function updateDynamicInput() {
+        var inputNum = 1;
+        while(inputNum <= max_fields) {
+            fillIn(`rsvp-remove-${inputNum.toString()}`, selected_language == 'en' ? lang.en_us['rsvp-remove'] : lang.es_mx['rsvp-remove'])
+            inputNum++;
+        }
+    }
     
 	$(add_button).click(function(e){ //on add input button click
 		e.preventDefault();
 		if(x < max_fields){ //max input box allowed
 			x++; //text box increment
-			$(wrapper).append('<div class="w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="Guest Name" name="guest"/>&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
+            $(wrapper).append(`<div class="w3-padding-16"><input class="w3-input w3-border" type="text" maxlength="64" placeholder="Guest Name" name="guest"/>&nbsp;&nbsp;<a id="rsvp-remove-${x.toString()}" href="#" class="remove_field"></a></div>`);
+            //add the appropriate english or spanish text to the new element
+            fillIn(`rsvp-remove-${x.toString()}`, selected_language == 'en' ? lang.en_us['rsvp-remove'] : lang.es_mx['rsvp-remove'])
 		}
 	});
 	
@@ -467,11 +484,11 @@ p {line-height: 2}
         <div id="rsvp-subtitle"></div>
       </div>
       <form name="rsvpForm" method="POST" action="https://bwq4r6jtg0.execute-api.us-east-2.amazonaws.com/api/rsvp">
-        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Your Name" name="name" required type="text"></div>
+        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Your Name" name="name" required type="text" maxlength="48"></div>
         <div class="input_fields_wrap"></div>
-        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Your Email" name="email" required></div>
-        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" placeholder="*Passcode" name="passcode" required></div> 
-        <div class="w3-left-align w3-padding-16"><input class="w3-input-comments w3-border" type="text" placeholder="Comments" name="comments"></div>
+        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" maxlength="48" placeholder="*Your Email" name="email" required></div>
+        <div class="w3-left-align w3-padding-16"><input class="w3-input w3-border" type="text" maxlength="16" placeholder="*Passcode" name="passcode" required></div> 
+        <div class="w3-left-align w3-padding-16"><input class="w3-input-comments w3-border" type="text" maxlength="256" placeholder="Comments" name="comments"></div>
         <div class="w3-padding-16 w3-center">
             <button id="rsvp-add-guest" class="add_field_button w3-button light-on-dark-1 w3-round w3-padding-large w3-large"></button>
         </div>

@@ -64,7 +64,8 @@ var lang = {
     'rsvp-closing': "<p><i>Sincerely, Andrew & Midori</i></p>",
     'rsvp-yes': "Going",
     'rsvp-virtual': "Attending virtually",
-    'rsvp-no': "Can't come"
+    'rsvp-no': "Can't come",
+    'rsvp-remove': "Remove"
   },
   'es_mx': {
     'title-text': 'Midori y Andrew',
@@ -131,6 +132,7 @@ var lang = {
     'rsvp-closing': "<p><i>Atentamente, Andrew y Midori </i></p>",
     'rsvp-yes': "Asistiendo",
     'rsvp-virtual': "Virtualmente",
-    'rsvp-no': "No puedo asistir"
+    'rsvp-no': "No puedo asistir",
+    'rsvp-remove': "Quitar"
   }
 };
