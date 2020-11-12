@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rajdhani" >
 
-<script type="text/javascript" src="js/lang.js"></script>
+<script type="text/javascript" src="js/lang.js?102"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -34,7 +34,19 @@ $(document).ready(function() {
     var englishBtn = document.getElementById('en_us');
     englishBtn.style.fontWeight = '900';
     englishBtn.style.textShadow = '0.5px 0 currentColor';
- 
+    
+    //check if rsvp successful
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const rsvp_status = urlParams.get('rsvp')
+    if(rsvp_status == 'success') {
+        document.getElementById('rsvp_success').style.display='block';
+    }
+    else
+    {
+        document.getElementById('rsvp_success').style.display='none';
+    }
+    
     $(english).click(function(e){ //on add input button click
        console.log('setting language to english');
        selected_language = 'en';
@@ -108,7 +120,8 @@ validateCloseRSVP = function() {
   var form_email = document.forms["rsvpForm"]["email"].value;
   var form_passcode = document.forms["rsvpForm"]["passcode"].value;
   if (form_name != "" && form_email !="" && form_passcode != "") {
-      closeRSVP()
+      closeRSVP();
+      document.getElementById('rsvp_processing').style.display='block';
   }
 }
 </script>
@@ -127,6 +140,12 @@ p {line-height: 2}
     
 .stpeteimg {
     background-image: url("/img/stpete.jpg");
+    height:1300px;  
+    width:100%;
+}
+    
+.stmarysimg {
+    background-image: url("/img/stmarys.jpg");
     height:1300px;  
     width:100%;
 }
@@ -166,11 +185,12 @@ p {line-height: 2}
 <!-- Navbar (sticky bottom) -->
 <div class="light-on-dark-1 w3-bottom w3-hide-small rajdhani-font">
   <div class="w3-bar w3-center w3-padding w3-opacity w3-hover-opacity-off">
-    <a href="#home" style="width:20%" class="w3-bar-item w3-button"><div id="Home-Btn"></div></a>
-    <a href="#schedule" style="width:20%" class="w3-bar-item w3-button"><div id="Schedule-Btn"></div></a>
-    <a href="#lodging" style="width:20%" class="w3-bar-item w3-button"><div id="Lodging-Btn"></div></a>
-    <a href="#faq" style="width:20%" class="w3-bar-item w3-button"><div id="FAQ-Btn"></div></a>
-    <a href="#rsvp" style="width:20%" class="w3-bar-item w3-button"><div id="RSVP-Btn"></div></a>
+    <a href="#home" style="width:16.66%" class="w3-bar-item w3-button"><div id="Home-Btn"></div></a>
+    <a href="#virtual" style="width:16.66%" class="w3-bar-item w3-button"><div id="Virtual-Btn"></div></a>
+    <a href="#schedule" style="width:16.66%" class="w3-bar-item w3-button"><div id="Schedule-Btn"></div></a>
+    <a href="#lodging" style="width:16.66%" class="w3-bar-item w3-button"><div id="Lodging-Btn"></div></a>
+    <a href="#faq" style="width:16.66%" class="w3-bar-item w3-button"><div id="FAQ-Btn"></div></a>
+    <a href="#rsvp" style="width:16.66%" class="w3-bar-item w3-button"><div id="RSVP-Btn"></div></a>
   </div>
 </div>
   
@@ -207,6 +227,28 @@ p {line-height: 2}
             <h1 class="w3-center w3-padding-top-32"><div id="Destination-Title"></div></h1>
             <h4 class="w3-center w3-text-grey w3-padding-btm"><b><i>St. Petersburg, Florida</i></b></h4>
             <div class="w3-padding-btm"><div id="Destination-Text"></div><br>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<!-- Virtual -->
+<div class="parallax stmarysimg" id="virtual">
+    <div class="w3-container w3-white" style="position:relative;top:0%;opacity: 0.85;">
+        <div class="w3-content">
+            <h1 class="w3-center w3-padding-top-32"><div id="Virtual-Title"></div></h1>
+            <h4 class="w3-center w3-text-grey w3-padding-btm">
+                <a class="hover-link" href="https://goo.gl/maps/6zwKzxH3pARWqr678" target="_blank"><b><i>St. Mary Our Lady of Grace Catholic Church</i></b></a>
+            </h4>
+            <div class="w3-padding-btm w3-center" id="Virtual-Text"></div>
+            <div class="w3-center w3-padding-btm">
+                <div class="w3-padding-btm-tiny"><h2><div id="Virtual-Schedule"></div></h2></div>
+                <div class="w3-padding-btm-small"><h5><div id="Virtual-Subtitle"></div></h5></div>
+                <div class="w3-padding-btm">
+                    <div id="Virtual-1"></div>
+                    <div id="Virtual-2"></div>
+                    <div id="Virtual-3"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -498,6 +540,23 @@ p {line-height: 2}
             <button id="rsvp-no" type="submit" name="no" onclick="validateCloseRSVP()" type="button" class="w3-third w3-center w3-button deep-red"></button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+  
+<div id="rsvp_processing" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:64px; max-width:600px;">
+    <div class="w3-container w3-white w3-center">
+         <button type="x" name="x" onclick="document.getElementById('rsvp_processing').style.display='none';" type="button" class="close-button light-on-dark-1 w3-round w3-small" style="position:absolute; top:15px; right:15px">x</button>
+        Sending RSVP... please do not close your web browser</div>
+  </div>
+</div>
+    
+<div id="rsvp_success" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="padding:64px; max-width:600px;">
+    <div class="w3-container w3-white w3-center">
+        <button type="x" name="x" onclick="document.getElementById('rsvp_success').style.display='none';" type="button" class="close-button light-on-dark-1 w3-round w3-small" style="position:absolute; top:15px; right:15px">x</button>
+        <div id="rsvp-success-text"></div>
     </div>
   </div>
 </div>
